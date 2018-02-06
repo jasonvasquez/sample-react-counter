@@ -1,17 +1,17 @@
-var path = require("path");
-var fs = require("fs");
-var webpack = require("webpack");
-var autoprefixer = require('autoprefixer');
-var copyWebpackPlugin = require('copy-webpack-plugin');
+const path = require("path");
+const fs = require("fs");
+const webpack = require("webpack");
+const fableUtils = require("fable-utils");
+const copyWebpackPlugin = require('copy-webpack-plugin');
 
 function resolve(filePath) {
   return path.join(__dirname, filePath)
 }
 
-var babelOptions = {
+var babelOptions = fableUtils.resolveBabelOptions({
   presets: [["es2015", { "modules": false }]],
   plugins: ["transform-runtime"]
-};
+});
 
 var out_path = resolve('./build');
 
